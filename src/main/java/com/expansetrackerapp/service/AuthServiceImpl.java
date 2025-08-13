@@ -14,9 +14,11 @@ import com.expansetrackerapp.repository.*;
 import com.expansetrackerapp.dto.*;
 import com.expansetrackerapp.security.JwtUtil;
 
+@SuppressWarnings("unused")
 @Service
 @RequiredArgsConstructor
 public class AuthServiceImpl implements AuthService {
+	
     private final AuthenticationManager authenticationManager;
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
@@ -40,12 +42,11 @@ public class AuthServiceImpl implements AuthService {
         if (userRepository.existsByEmail(request.getEmail())) {
             throw new RuntimeException("Email already registered");
         }
-        var user = User.builder()
-                .username(request.getUsername())
-                .email(request.getEmail())
-                .password(passwordEncoder.encode(request.getPassword()))
-                .role("ROLE_USER")
-                .build();
+        User user = new User();
+        user.setUsername(request.getUsername());
+        user.setEmail(request.getEmail());
+        user.setPassword(passwordEncoder.encode(request.getPassword()));
+        user.setRole("ROLE_USER");
         userRepository.save(user);
         var token = jwtUtil.generateToken(user.getUsername());
         return new AuthResponse(token);

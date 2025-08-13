@@ -1,7 +1,7 @@
 package com.expansetrackerapp.controller;
 
-import com.expansetrackerapp.entity.*;
-import com.expansetrackerapp.dto.*;
+import com.expansetrackerapp.entity.Expense;
+import com.expansetrackerapp.dto.ExpenseDTO;
 import com.expansetrackerapp.service.ExpenseService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -15,10 +15,13 @@ import java.util.List;
 @RequestMapping("/api/expenses")
 @RequiredArgsConstructor
 public class ExpenseController {
+
     private final ExpenseService expenseService;
 
     @PostMapping
-    public ResponseEntity<Expense> createExpense(Authentication authentication, @RequestBody ExpenseDTO dto) {
+    public ResponseEntity<Expense> createExpense(
+            Authentication authentication, 
+            @RequestBody ExpenseDTO dto) {
         String username = authentication.getName();
         return ResponseEntity.ok(expenseService.createExpense(username, dto));
     }
@@ -37,10 +40,12 @@ public class ExpenseController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Expense>> getExpenses(Authentication authentication,
-                                                     @RequestParam(required = false) String start,
-                                                     @RequestParam(required = false) String end,
-                                                     @RequestParam(required = false) String category) {
+    public ResponseEntity<List<Expense>> getExpenses(
+            Authentication authentication,
+            @RequestParam(required = false) String start,
+            @RequestParam(required = false) String end,
+            @RequestParam(required = false) String category
+    ) {
         String username = authentication.getName();
         LocalDate startDate = (start == null) ? null : LocalDate.parse(start);
         LocalDate endDate = (end == null) ? null : LocalDate.parse(end);

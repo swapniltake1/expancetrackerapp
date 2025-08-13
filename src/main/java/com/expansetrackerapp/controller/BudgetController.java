@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/budgets")
 @RequiredArgsConstructor
 public class BudgetController {
+	
     private final BudgetService budgetService;
 
     @PostMapping
@@ -22,7 +23,7 @@ public class BudgetController {
         // Map fields from Budget to BudgetDTO as appropriate
         responseDto.setId(budget.getId());
         responseDto.setMonth(budget.getMonth());
-        responseDto.setAmount(budget.getAmount());
+        responseDto.setLimitAmount(budget.getAmount());
         // Add other field mappings as needed
         return ResponseEntity.ok(responseDto);
     }
