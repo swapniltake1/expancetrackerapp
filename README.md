@@ -1,5 +1,3 @@
-
-````markdown
 # 💰 Expense Tracker App
 
 A simple yet functional **Expense Tracker API** built with **Spring Boot**.  
@@ -30,7 +28,7 @@ The application allows users to manage their expenses, set budgets, and filter e
 ## 📦 Installation & Setup
 
 1. **Clone the Repository**
-   ```bash
+   ``` bash
    git clone https://github.com/<your-username>/expense-tracker.git
    cd expense-tracker
    ````
