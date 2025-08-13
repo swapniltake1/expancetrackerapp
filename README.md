@@ -86,5 +86,3 @@ This is a **practice project** created to strengthen my Spring Boot, REST API, a
 
 This project is open-source and available for learning purposes.
 
-```
-
