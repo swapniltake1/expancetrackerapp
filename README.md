@@ -6,7 +6,6 @@ A simple yet functional **Expense Tracker API** built with **Spring Boot**.
 This project is designed as part of my personal practice and learning journey in backend development.  
 The application allows users to manage their expenses, set budgets, and filter expense records by date or category.
 
----
 
 ## 🚀 Features
 
@@ -16,7 +15,6 @@ The application allows users to manage their expenses, set budgets, and filter e
 - **Filter API** – Retrieve expenses based on time range or category.
 - **Clean Code Structure** – Follows layered architecture with services, repositories, and DTOs.
 
----
 
 ## 🛠️ Tech Stack
 
@@ -28,7 +26,6 @@ The application allows users to manage their expenses, set budgets, and filter e
 - **MySQL / PostgreSQL** (configurable)
 - **Lombok** for boilerplate reduction
 
----
 
 ## 📦 Installation & Setup
 
@@ -36,7 +33,7 @@ The application allows users to manage their expenses, set budgets, and filter e
    ```bash
    git clone https://github.com/<your-username>/expense-tracker.git
    cd expense-tracker
-````
+   ````
 
 2. **Configure the Database**
 
@@ -58,7 +55,7 @@ The application allows users to manage their expenses, set budgets, and filter e
 
    * API base URL: `http://localhost:8080/api`
 
----
+
 
 ## 📄 API Examples
 
@@ -80,14 +77,12 @@ POST /api/expenses
 GET /api/expenses
 ```
 
----
 
 ## 📌 Note
 
 This is a **practice project** created to strengthen my Spring Boot, REST API, and backend architecture skills.
 **Next Step** → I will integrate a **frontend** using React or Angular for a complete full-stack application experience.
 
----
 
 ## 📜 License
 
@@ -95,9 +90,3 @@ This project is open-source and available for learning purposes.
 
 ```
 
----
-
-If you want, I can also prepare **a more visually appealing README** with badges (Java version, Spring Boot, MySQL, etc.) and a **sample architecture diagram** so your GitHub repo looks polished and professional.  
-
-Do you want me to prepare that enhanced version?
-```
