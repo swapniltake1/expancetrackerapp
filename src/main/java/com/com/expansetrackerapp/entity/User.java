@@ -24,5 +24,6 @@ public class User {
     private String password;
 
     // Simple role model: ROLE_USER, ROLE_ADMIN
+    @Builder.Default
     private String role = "ROLE_USER";
 }

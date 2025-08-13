@@ -17,7 +17,14 @@ public class BudgetController {
     @PostMapping
     public ResponseEntity<BudgetDTO> setBudget(Authentication authentication, @RequestBody BudgetDTO dto) {
         String username = authentication.getName();
-        return ResponseEntity.ok(budgetService.setOrUpdateBudget(username, dto));
+        Budget budget = budgetService.setOrUpdateBudget(username, dto);
+        BudgetDTO responseDto = new BudgetDTO();
+        // Map fields from Budget to BudgetDTO as appropriate
+        responseDto.setId(budget.getId());
+        responseDto.setMonth(budget.getMonth());
+        responseDto.setAmount(budget.getAmount());
+        // Add other field mappings as needed
+        return ResponseEntity.ok(responseDto);
     }
 
     @GetMapping("/{month}")
