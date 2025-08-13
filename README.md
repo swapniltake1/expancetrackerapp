@@ -29,7 +29,7 @@ The application allows users to manage their expenses, set budgets, and filter e
 
 1. **Clone the Repository**
    ``` bash
-   git clone https://github.com/<your-username>/expense-tracker.git
+   git clone https://github.com/swapniltake1/expense-tracker.git
    cd expense-tracker
    ````
 
