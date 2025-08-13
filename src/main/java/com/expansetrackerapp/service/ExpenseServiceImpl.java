@@ -1,3 +1,4 @@
+package com.expansetrackerapp.service;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -46,9 +47,31 @@ public class ExpenseServiceImpl implements ExpenseService {
 		
 	}
 
-	@Override
-	public List<Expense> getExpenses(String username, LocalDate start, LocalDate end, String category) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+public List<Expense> getExpenses(String username, LocalDate start, LocalDate end, String category) {
+    User user = userRepository.findByUsername(username)
+            .orElseThrow(() -> new RuntimeException("User not found"));
+
+    // If no filters are applied, return all expenses for the user
+    if (start == null && end == null && (category == null || category.isEmpty())) {
+        return expenseRepository.findByUser(user);
+    }
+
+    // Apply filters dynamically
+    if (start != null && end != null && category != null && !category.isEmpty()) {
+        return expenseRepository.findByUserAndDateBetweenAndCategory(user, start, end, category);
+    } else if (start != null && end != null) {
+        return expenseRepository.findByUserAndDateBetween(user, start, end);
+    } else if (category != null && !category.isEmpty()) {
+        return expenseRepository.findByUserAndCategory(user, category);
+    } else if (start != null) {
+        return expenseRepository.findByUserAndDateAfter(user, start);
+    } else if (end != null) {
+        return expenseRepository.findByUserAndDateBefore(user, end);
+    }
+
+    // Fallback
+    return expenseRepository.findByUser(user);
+}
+
+
 }

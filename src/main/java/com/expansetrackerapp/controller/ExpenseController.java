@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -18,13 +19,16 @@ public class ExpenseController {
 
     private final ExpenseService expenseService;
 
-    @PostMapping
-    public ResponseEntity<Expense> createExpense(
-            Authentication authentication, 
-            @RequestBody ExpenseDTO dto) {
-        String username = authentication.getName();
-        return ResponseEntity.ok(expenseService.createExpense(username, dto));
-    }
+    @PostMapping("/create")
+     public ResponseEntity<Expense> createExpense(
+        Authentication authentication, 
+        @RequestBody ExpenseDTO dto) {
+    String username = authentication.getName();
+    Expense expense = expenseService.createExpense(username, dto);
+    return ResponseEntity
+        .created(URI.create("/api/expenses/" + expense.getId()))
+        .body(expense);
+}
 
     @PutMapping("/{id}")
     public ResponseEntity<Expense> updateExpense(Authentication authentication, @PathVariable Long id, @RequestBody ExpenseDTO dto) {

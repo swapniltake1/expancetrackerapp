@@ -1,6 +1,6 @@
 package com.expansetrackerapp.dto;
 
-import lombok.Data;
+
 import java.math.BigDecimal;
 
 public class BudgetDTO {
